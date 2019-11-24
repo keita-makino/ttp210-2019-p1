@@ -1,0 +1,258 @@
+import { Cite, Notes, Slide, MarkdownSlides, List, ListItem,Appear } from "spectacle";
+import { DarkSlide, CodeSlide } from "./slides";
+import RegularComponent from "./regular-component";
+import "./index.css";
+import Plot from "./Plot.jsx"
+
+
+
+
+## The Transit-Oriented Economy
+
+<br />
+
+Keita Makino - 11/25/2019
+
+<Notes>OK, let's start. This is Keita Makino from ITS, institute of transportation studies. Today, I like to talk about this work, Origin-Destination Flow Maps in Immersive Environments.</Notes>
+
+
+---
+
+# Outline
+
+<List ordered ={true}>
+  <ListItem>Introduction</ListItem>
+  <ListItem>Flows on</ListItem>
+  <ListItem>Flows on Flat Map, Globe and MapsLink</ListItem>
+  <ListItem>Dense Flow Data Sets</ListItem>
+</List>
+
+<Notes>Heres the outline, we will review three topics today.</Notes>
+
+---
+
+# 1. Introduction
+
+<Notes>The introduction.</Notes>
+
+---
+
+<Plot />
+
+---
+
+## 2D Map
+
+<br />
+<img src={require("../assets/2.png")} width={"100%"} />
+<p style={{ fontSize: '18px', textAlign:"right" }}>
+Google. (n.d.). Google Maps. Retrieved from https://www.google.com/maps/@38.5347497,-121.7543652,15z (Accessed: 11/14/2019)
+</p>
+
+<Notes>I am 100% sure that all you here have used a navigation system, google maps. Google maps is usually shown as a 2D top-view map. Why? because it is enough. When I search for a route to San Francisco, for example, what I want to see is just two or three navigation routes, right? Then why do I have to open Google Earth, the rich 3D version every time for such a simple visualization? If it is enough, fewer is better.</Notes>
+
+---
+
+## 2D Flow Map
+
+<br />
+<img src={require("../assets/1.png")} width={"100%"} />
+<p style={{ fontSize: '18px', textAlign:"right" }}>
+Huang, Z., Wu, X., Garcia, A. J., Fik, T. J., & Tatem, A. J. (2013). An open-access modeled passenger flow matrix for the global air network in 2010. PloS one, 8(5), e64317.
+</p>
+
+<Notes>The things are different when this O-D flow map comes. This is the monthly flight passenger over the world in 2010. Because there are too many origin and destination, it is meant to be messy, overlapped, complicated. It was easy for me to select one shortest path from 2-3 Google Maps paths, but how about this? It's totally difficult now to pick up and compare several flows with this visualization.</Notes>
+
+---
+
+
+# 3D Flow Map?
+
+<List>
+  <Appear><ListItem>Less clutter</ListItem></Appear>
+  <Appear><ListItem>Occlusion control by motion</ListItem></Appear>
+  <Appear><ListItem>Use height for additional info</ListItem></Appear>
+  <Appear><ListItem>Resolve ambiguity</ListItem></Appear>
+</List>
+
+<Notes>Then we can utilize one more dimension. WIth a 3D flow visualization, we can make it less clutter, occlusion control by head motion, additional information with height map, and less ambiguous.</Notes>
+
+---
+
+# 2. Flows on Flat Map
+
+<Notes>Let's start from a simpler models. Flat maps.</Notes>
+
+---
+
+## Two 2D + Three 3D Models
+<img src={require("../assets/3.png")} width={"100%"} />
+
+<Notes>In the first section of the paper, the authors have developed five models with flat map. two is 2D flow map, and three is 3D flow map. Let's take a look at a demo video.</Notes>
+
+---
+
+<img src={require("../assets/4.1.jpg")} width={"100%"} />
+
+<Notes>So, this is the most basic, primitive one.</Notes>
+
+---
+
+<img src={require("../assets/4.2.jpg")} width={"100%"} />
+<Notes>2D with curved flow.</Notes>
+
+---
+
+<img src={require("../assets/4.3.jpg")} width={"100%"} />
+<Notes>Just simple 3D.</Notes>
+
+---
+
+<img src={require("../assets/4.4.jpg")} width={"100%"} />
+<Notes>3D with information about the amount of flow.</Notes>
+
+---
+
+<img src={require("../assets/4.5.jpg")} width={"100%"} />
+<Notes>And 3D with information about the distance between origin and destination.</Notes>
+
+---
+
+## Task + Evaluation
+
+- Compare the width of randomly selected two flows
+- "*For the two flows from A to B and X to Y, which is greater?*"
+- 40/80 flows, 10%/20% of width difference
+- 20 participants (12M, 8F), 5 trials each task
+- Two tasks in a set: **search** + **comparison**
+- Evaluation through accuracy and time
+
+<Notes>Which one is better, here is the task and evaluation adopted in the paper. The task is simple, just compare the width, amount of two flows shown in the map. Each flow connects from one country to another, representing the international migration between the countries. In the task, there are either 40/80 flows in the map, and the difference between two flows that the participants examine is 10%/20%. There were 20 participants, 12 male and 8 female. In this task, there are two sub-tasks to first find the target flows and then compare them. Evaluation was done through the accuracy and time to complete.</Notes>
+
+---
+
+## Result
+<br />
+<img src={require("../assets/6.png")} width={"100%"} />
+
+<List>
+  <Appear><ListItem>3D models takes longer, but more precise</ListItem></Appear>
+  <Appear><ListItem>Distance model is best among 3D models</ListItem></Appear>
+</List>
+
+<Notes>The result is, as you expected, the 3D models have higher accuracy in the task. However, the time to complete the task was somehow longer in some 3D models. Among them, the model which has additional information of distance marked the best performance.</Notes>
+
+---
+
+## View Angle
+<br />
+<img src={require("../assets/7.jpg")} width={"100%"} />
+
+
+<Notes>Because 3D models have a certain height information, participants started to look at the map in higher angles in the experiment. This is kind of intuitive, but an interesting result.</Notes>
+
+---
+
+# 3. Flows on Flat Map, Globe and MapsLink
+
+<Notes>Now, let's go for more complicated models.</Notes>
+
+---
+
+## One "Globe" + One "MapsLink"
+<br />
+<img src={require("../assets/12.jpg")} width={"100%"} />
+
+<Notes>In the second part of the paper, they have introduced two "full-3D" models in the experiment. One is globe, just like a Google Earth with the 3D flows, and the other is mapslink, which has two flat maps from/to which the flows are connected.</Notes>
+
+
+---
+
+<img src={require("../assets/5.1.jpg")} width={"100%"} />
+
+---
+
+<img src={require("../assets/5.2.jpg")} width={"100%"} />
+
+---
+
+## Task + Evaluation
+
+- Same task to the previous section
+- Higher density (80/120 flows)
+- 20 participants (14M, 6F), 5 trials each task
+
+<Notes>Task and evaluation. The task itself remains same here, but the number of flow has increased, because we obtained some additional capability.</Notes>
+
+---
+
+## Result
+<br />
+<img src={require("../assets/8.png")} width={"100%"} />
+
+<List>
+  <Appear><ListItem>Globe model further better than 3D distance model</ListItem></Appear>
+  <Appear><ListItem>MapsLink is worst in everything</ListItem></Appear>
+</List>
+
+<Notes>The result is somewhat interesting though. The globe model was far better than 3D distance model, which was the best in the first part. On the other hand, mapslink, which would seem an extension of 3D model, had the worst result.</Notes>
+
+---
+
+# 4. Dense Flow Data Sets
+
+<Notes>Now, they proceeded to test the durability of the models.</Notes>
+
+---
+
+## Will they handle much denser map?
+
+- Increase the number of flows to 200/300
+- Examine the accuracy and time
+- 12 participants (6M, 6F), 8 trials each task
+
+<Notes>Their interest is now to examine if the performance of the models remains in the same level when there are much more flows. They then had the third experiment with 200/300 flows in one map.</Notes>
+
+---
+
+<img src={require("../assets/10.1.jpg")} width={"100%"} />
+
+---
+
+<img src={require("../assets/10.2.jpg")} width={"100%"} />
+
+---
+
+## Result
+<br />
+<img src={require("../assets/9.png")} width={"100%"} />
+
+<List>
+  <Appear><ListItem>Globe model keeps high accuracy</ListItem></Appear>
+  <Appear><ListItem>2D/3D models take much longer time</ListItem></Appear>
+</List>
+
+<Notes>The result is, while globe model has kept a similar level, 90% of accuracy, the others, note that mapslink is fired because he did too bad, has dropped its accuracy to some extent. Also, these three had similar time to completion in the second part, but now 2D/3D models have gone to higher time. This tendency is typical in 300 flows cases actually.</Notes>
+
+---
+
+# Conclusion
+
+<Notes>Conclusion.</Notes>
+
+---
+
+<List>
+  <Appear><ListItem>2D flow map is <i>not</i> the best way</ListItem></Appear>
+  <Appear><ListItem>3D flow map could solve the issue of overlapping</ListItem></Appear>
+  <Appear><ListItem>Different 3D visualization significantly affects the performance</ListItem></Appear>
+  <Appear><ListItem><b><i>Intuitive >> Innovative?</i></b></ListItem></Appear>
+</List>
+
+<Notes>We have reviewed many models in this short time. Let me summarize it. First, as you see it's messy, 2D flow map is not the best way in the VR space. 3D flow map could mitigate the issue of overlapping and occlusion significantly. However, the way of implementing 3D visualization would affect the result super significantly. Here, it is my assumption though, it seems that being intuitive is overwhelmingly important than innovative. This intuitive does not mean intuitive in our body motion or instinct, rather referring to the common knowledge, sense of us. The globe model is, in terms of the specification, the worst. You cannot see the back-side of the map directly. But it was the best, just because we intuitively know the globe is globe-shaped. If the world, the earth is two facing parallel flat land, wouldn't the mapslink model be the best?</Notes>
+
+---
+
+# Thank you!
+
+
