@@ -1,4 +1,4 @@
-import React, { createElement, Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -21,7 +21,6 @@ import {
   TableItem
 } from 'spectacle';
 
-
 const _Heading = size => {
   const component = ({ children }) => <Heading size={size}>{children}</Heading>;
   component.propTypes = { children: PropTypes.node };
@@ -42,7 +41,7 @@ const _CombineBlockQuote = ({ children }) => (
 
 _CombineBlockQuote.propTypes = { children: PropTypes.node };
 
-const _CodePane = ({ children, language }) => (
+const _CodePane = ({ children }) => (
   <CodePane theme="external" lang="javascript" source={children} />
 );
 

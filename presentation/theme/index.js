@@ -1,17 +1,17 @@
-import createTheme from "../../createTheme";
+import createTheme from '../../createTheme';
 
 const colors = {
-  primary: "white",
-  secondary: "#1F2022", // almost black w/ blueish tint
-  tertiary: "#fc300f", // bright red
-  quaternary: "#CECECE" // pale gray
+  primary: '#FFFFFF',
+  secondary: '#FFFFFF', // almost black w/ blueish tint
+  tertiary: '#6699FF', // bright red
+  quaternary: '#EEEEEE' // pale gray
 };
 
 const theme = createTheme(
   colors,
   {
-    primary: "Montserrat",
-    secondary: "Helvetica"
+    primary: 'Montserrat',
+    secondary: 'Helvetica'
   },
   {
     progress: {
@@ -28,32 +28,26 @@ const theme = createTheme(
     components: {
       heading: {
         h1: {
-          fontSize: "3.6rem",
-          textTransform: "uppercase"
+          fontSize: '3.6rem'
         },
         h2: {
-          fontSize: "3rem",
-          textTransform: "uppercase"
+          fontSize: '3rem'
         },
         h3: {
-          fontSize: "2.5rem",
-          textTransform: "uppercase"
+          fontSize: '2.5rem'
         },
         h4: {
-          fontSize: "2.2rem",
-          textTransform: "uppercase"
+          fontSize: '2.2rem'
         },
         h5: {
-          fontSize: "1.8rem",
-          textTransform: "uppercase"
+          fontSize: '1.8rem'
         },
         h6: {
-          fontSize: "1.3rem",
-          textTransform: "uppercase"
+          fontSize: '1.3rem'
         }
       },
       codePane: {
-        fontSize: "2rem"
+        fontSize: '2rem'
       }
     }
   }

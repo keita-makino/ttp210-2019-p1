@@ -1,3 +1,62 @@
+h1,
+h2,
+h3 {
+  margin: 2rem 0 !important;
+}
+
 li {
   margin: 2rem 0;
+}
+
+.rv-xy-plot__grid-lines__line {
+  stroke: gray;
+  stroke-width: 1;
+}
+
+body {
+  background-color: #060810 !important;
+}
+
+p {
+  color: #eeeeee !important;
+}
+
+ul > ul {
+  margin-left: 3rem;
+}
+
+ul > ul > li {
+  font-size: 2rem !important;
+  margin: 1rem 0 !important;
+}
+
+table {
+  border-spacing: unset;
+}
+
+td {
+  padding: 0.5rem;
+  border: 1px solid #666666;
+}
+
+.reference li {
+  font-size: 16px !important;
+  margin: 0.5rem 0;
+}
+
+.around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.around > * {
+  align-self: center;
+}
+
+.third {
+  width: 30%;
+}
+
+img {
+  height: auto;
 }

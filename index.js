@@ -1,14 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ReactDOM from "react-dom";
-import { AppContainer } from "react-hot-loader";
-import Redbox from "redbox-react";
-import { Deck, Slide } from "spectacle";
-import components from "./presentation/components";
-import slides, { transitions } from "./presentation/index.mdx";
-import theme from "./presentation/theme";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
+import Redbox from 'redbox-react';
+import { Deck, Slide } from 'spectacle';
+import slides, { transitions } from './presentation/index.mdx';
+import theme from './presentation/theme';
 
-require("normalize.css");
+require('normalize.css');
 
 const CustomErrorReporter = ({ error }) => <Redbox error={error} />;
 
@@ -16,51 +15,51 @@ CustomErrorReporter.propTypes = {
   error: PropTypes.instanceOf(Error).isRequired
 };
 
-const creeperTransition = (transitioning, forward) => {
-  const offset = forward ? 100 : -100;
-  return {
-    transform: `
-      translate3d(${transitioning ? offset : 0}%,0, 0)
-    `
-  };
-};
-
 ReactDOM.render(
   <AppContainer errorReporter={CustomErrorReporter}>
     <Deck
-      transition={["slide"]}
+      transition={['slide']}
       transitionDuration={700}
       theme={theme}
-      progress={"none"}
       showFullscreenControl={false}
+      progress={'none'}
     >
       {slides.map((S, i) => {
         let transition = transitions[i] || null;
-        return <S transition={transition} key={`slide-${i}`} />;
+        return (
+          <S bgColor={'#060810'} transition={transition} key={`slide-${i}`} />
+        );
       })}
     </Deck>
   </AppContainer>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 if (module.hot) {
   module.hot.accept(() => {
-    const newTheme = require("./presentation/theme").default;
-    const newSlides = require("./presentation/index.mdx").default;
+    const newTheme = require('./presentation/theme').default;
+    const newSlides = require('./presentation/index.mdx').default;
     ReactDOM.render(
       <AppContainer errorReporter={CustomErrorReporter}>
         <Deck
-          transition={[creeperTransition]}
-          transitionDuration={500}
+          transition={['slide']}
+          transitionDuration={700}
           theme={newTheme}
+          showFullscreenControl={false}
         >
           {newSlides.map((S, i) => {
             let transition = transitions[i] || null;
-            return <S transition={transition} key={`slide-${i}`} />;
+            return (
+              <S
+                bgColor={'#060810'}
+                transition={transition}
+                key={`slide-${i}`}
+              />
+            );
           })}
         </Deck>
       </AppContainer>,
-      document.getElementById("root")
+      document.getElementById('root')
     );
   });
 }
